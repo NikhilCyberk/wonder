@@ -1,0 +1,79 @@
+body {
+  /* background-color: tomato; */
+  font-family: "Plus Jakarta Sans", sans-serif !important;
+}
+
+.navbar {
+  height: 5rem;
+  background-color: bisque;
+}
+.fa-compass {
+  color: rgb(245, 37, 37);
+  font-size: 2rem;
+}
+.nav-link {
+  color: black !important;
+}
+/* footer */
+.f-info-links a {
+  text-decoration: none;
+  color: black;
+}
+.f-info-links a:hover {
+  text-decoration: underline;
+}
+.f-info-links,
+.f-info-socials,
+.f-info-brand {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  font-size: 1.2rem;
+  vertical-align: middle;
+}
+
+.f-info-socials i {
+  margin-right: 1rem;
+  vertical-align: middle;
+}
+
+.f-info {
+  vertical-align: middle;
+  text-align: center;
+  height: 8rem;
+  background-color: beige;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: space-evenly;
+  justify-content: center;
+}
+
+/* crads */
+.cards {
+  border: none !important;
+  margin-bottom: 2rem;
+}
+
+.card-img-top {
+  border-radius: 1rem !important;
+  width: 200%;
+  object-fit: cover !important;
+}
+
+.card-body {
+  padding: 0;
+}
+.card-text p {
+  font-weight: 400 !important;
+}
+
+.listing-link {
+  text-decoration: none;
+}
+/* card effect  */
+.card-img-overlay:hover {
+  opacity: 0.3;
+  background-color: antiquewhite;
+}
