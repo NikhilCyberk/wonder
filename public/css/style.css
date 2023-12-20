@@ -58,9 +58,9 @@ body {
 }
 
 /* crads */
-.cards {
-  border: none !important;
+.card {
   margin-bottom: 2rem;
+  border: none !important;
 }
 
 .card-img-top {
@@ -88,5 +88,20 @@ body {
 /* new page */
 .add-btn {
   background-color: rgb(245, 37, 37) !important ;
+  border: none !important;
+}
+
+/* Show Image */
+.show-image {
+  height: 30vh;
+}
+
+.btns {
+  display: flex;
+}
+
+.show-card {
+  padding-left: 0;
+  padding-right: 0;
   border: none !important;
 }
