@@ -9,6 +9,9 @@
           <div class="mb-3">
             <label for="title" class="form-label">Title</label>
             <input name="listing[title]" placeholder="Add a catchy title" type="text" class="form-control" required />
+            <div class="valid-feedback">
+              Title looks good!
+            </div>
           </div>
           <!-- <br /><br /> -->
 
@@ -16,11 +19,17 @@
             <label for="description" class="form-label">Description</label>
             <textarea name="listing[description]" placeholder="enter description" class="form-control" required>
           </textarea>
+            <div class="invalid-feedback">
+              Description not validated
+            </div>
           </div>
           <!-- <br /><br /> -->
           <div class="mb-3">
             <label for="image" class="form-label">Image</label>
             <input name="listing[image]" placeholder="enter URL" type="text" class="form-control" required />
+            <div class="invalid-feedback">
+              link not validated
+            </div>
           </div>
           <!-- <br /><br /> -->
 
@@ -28,6 +37,9 @@
             <div class="mb-3 col-md-4">
               <label for="price" class="form-label">Price</label>
               <input name="listing[price]" placeholder="1200" type="number" class="form-control" required />
+              <div class="invalid-feedback">
+                not validated
+              </div>
             </div>
 
             <!-- <br /><br /> -->
@@ -35,6 +47,9 @@
               <label for="country" class="form-label">Country</label>
 
               <input name="listing[country]" placeholder="India" type="text" class="form-control" required />
+              <div class="invalid-feedback">
+                not validated
+              </div>
             </div>
           </div>
           <!-- <br /><br /> -->
@@ -42,6 +57,9 @@
             <label for="location" class="form-label">Location </label>
 
             <input name="listing[location]" placeholder="Jaipur, Rajasthan" type="text" class="form-control" required />
+            <div class="invalid-feedback">
+              not validated
+            </div>
           </div>
           <!-- <br /><br /> -->
           <button class="btn btn-dark add-btn mt-3">Add</button>
