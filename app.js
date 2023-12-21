@@ -128,7 +128,8 @@ app.all("*", (req, res, next) => {
 app.use((err, req, res, next) => {
   //error handling using express handling
   let { statusCode = 500, message = "Something went wrong!" } = err;
-  res.status(statusCode).send(message);
+  res.status(statusCode).render("listings/error.ejs", { err });
+  //   res.status(statusCode).send(message);
   // res.send("Something went wrong");
 });
 
