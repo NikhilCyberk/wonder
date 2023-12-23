@@ -57,12 +57,14 @@
             </form>
         </div>
         <br>
+
+        <!-- reviews form  -->
         <div class="col-8 offset-3 mb-3">
             <hr>
             <h4>
                 Leave Reaview
             </h4>
-            <form action="">
+            <form action="/listings/<%= listing.id %>/reviews" method="POST">
                 <div class="mb-3 mt-3">
                     <label for="rating" class="form-label">Rating</label>
                     <input class="form-range" type="range" min="1" max="5" id="rating" name="review[rating]">
