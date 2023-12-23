@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const wrapAsync = require("../utils/wrapAsync.js");
-const { listingSchema, reviewSchema } = require("../schema.js");
+const { listingSchema } = require("../schema.js");
 const ExpressError = require("../utils/ExpressError.js");
 const Listing = require("../models/listing.js");
 
@@ -27,7 +27,7 @@ router.get(
 );
 
 //new route
-router.get("//new", (req, res) => {
+router.get("/new", (req, res) => {
   res.render("./listings/new.ejs");
 });
 
