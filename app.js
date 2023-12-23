@@ -35,6 +35,15 @@ app.get("/", (req, res) => {
   res.send("working");
 });
 
+const validateListing = (req, res, next) => {
+  let { error } = listingSchema.validate(req.body);
+  //   console.log(result);
+  if (error) {
+    let errMsg = error.details.map((el) => el.message).join(",");
+    throw new ExpressError(400, errMsg);
+  }
+};
+
 //index routes
 
 app.get(
@@ -63,15 +72,16 @@ app.get(
 //create a new listing
 app.post(
   "/listings/",
+  validateListing,
   wrapAsync(async (req, res, next) => {
     // if (!req.body.listing) {
     //   throw new ExpressError(400, "Send valid data for listing");
     // }
-    let result = listingSchema.validate(req.body);
-    console.log(result);
-    if (result.error) {
-      throw new ExpressError(400, result.error);
-    }
+    // let result = listingSchema.validate(req.body);
+    // console.log(result);
+    // if (result.error) {
+
+    // }
 
     const newListing = new Listing(req.body.listing);
     await newListing.save();
@@ -93,6 +103,7 @@ app.get(
 
 app.put(
   "/listings/:id",
+  validateListing,
   wrapAsync(async (req, res) => {
     if (!req.body.listing) {
       throw new ExpressError(400, "Send valid data for listing");
