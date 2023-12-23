@@ -9,7 +9,7 @@
             </h3>
         </div>
 
-        <div class="card col-6 offset-3 show-card">
+        <div class="card col-6 offset-3 show-card litsing-card">
             <img src="<%= listing.image%> " class="card-img-top show-image" alt="listing_image">
             <div class="card-body">
                 <p class="card-text">
@@ -24,10 +24,6 @@
                 </p>
             </div>
         </div>
-
-
-
-
         <!-- <ul>
                     <li>
                         <%= listing.title %>
@@ -44,20 +40,15 @@
                     <li>
                         <%= listing.country %>
                     </li>
-
                 </ul> -->
-
         <!-- <br> -->
         <div class="btns">
-
             <a href="/listings/<%= listing._id %>/edit" class="btn btn-dark col-1 offset-3"> Edit </a>
-
             <form method="POST" action="/listings/<%=listing._id%>?_method=DELETE">
                 <button class="btn btn-dark offset-4 add-btn"> Delete </button>
             </form>
         </div>
         <br>
-
         <!-- reviews form  -->
         <div class="col-8 offset-3 mb-3">
             <hr>
@@ -78,23 +69,30 @@
                     </div>
                 </div>
                 <button class="btn btn-outline-secondary mt-3 mb-3">Submit</button>
+                <hr />
+                <p>
+                    <b>
+                        All Reivews
+                    </b>
+                </p>
+                <div class="row">
 
-                <hr>
-
-                <h4>All Reivews</h4>
-                <ul>
                     <% for(let review of listing.reviews){ %>
-                        <li>
-                            <%= review.comment %>
-                                <%= review.rating %> stars
-                        </li>
+                        <div class="card col-5 mb-3 ms-3">
+                            <div class="card-body">
+                                <h5 class="card-title">xyz person</h5>
+                                <h6 class="card-subtitle mb-2 text-body-secondary">
+                                    <%= review.comment %>
+                                </h6>
+                                <p class="card-text">Rating:
+                                    <%= review.rating %> stars
+                                </p>
+                            </div>
+                        </div>
                         <%}%>
-                </ul>
+                </div>
             </form>
         </div>
-
-
-
     </div>
 
 
