@@ -6,7 +6,7 @@ const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const wrapAsync = require("./utils/wrapAsync.js");
 const ExpressError = require("./utils/ExpressError.js");
-const { listingSchema } = require("./schema.js");
+const { listingSchema, reviewSchema } = require("./schema.js");
 const Listing = require("./models/listing.js");
 const Review = require("./models/review.js");
 
@@ -36,12 +36,26 @@ app.get("/", (req, res) => {
   res.send("working");
 });
 
+//for validating new lisitng for sending to the server
 const validateListing = (req, res, next) => {
   let { error } = listingSchema.validate(req.body);
   //   console.log(result);
   if (error) {
     let errMsg = error.details.map((el) => el.message).join(",");
     throw new ExpressError(400, errMsg);
+  } else {
+    next();
+  }
+};
+//for validating new reviews for sending to the server
+const validateReviws = (req, res, next) => {
+  let { error } = reviewSchema.validate(req.body);
+  //   console.log(result);
+  if (error) {
+    let errMsg = error.details.map((el) => el.message).join(",");
+    throw new ExpressError(400, errMsg);
+  } else {
+    next();
   }
 };
 
@@ -127,19 +141,23 @@ app.delete(
 
 // Reviews
 // POST Route
-app.post("/listings/:id/reviews", async (req, res) => {
-  let listing = await Listing.findById(req.params.id);
-  let newReview = new Review(req.body.review);
+app.post(
+  "/listings/:id/reviews",
+  validateReviws,
+  wrapAsync(async (req, res) => {
+    let listing = await Listing.findById(req.params.id);
+    let newReview = new Review(req.body.review);
 
-  listing.reviews.push(newReview);
+    listing.reviews.push(newReview);
 
-  await newReview.save();
-  await listing.save();
+    await newReview.save();
+    await listing.save();
 
-  // console.log("new review saved");
-  // res.send("new review saved");
-  res.redirect(`/listings/${listing._id}`);
-});
+    // console.log("new review saved");
+    // res.send("new review saved");
+    res.redirect(`/listings/${listing._id}`);
+  })
+);
 
 // app.get('/testlisting', async (req, res) => {
 //     let sampleListing = new Listing({
