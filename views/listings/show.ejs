@@ -78,6 +78,18 @@
                     </div>
                 </div>
                 <button class="btn btn-outline-secondary mt-3 mb-3">Submit</button>
+
+                <hr>
+
+                <h4>All Reivews</h4>
+                <ul>
+                    <% for(let review of listing.reviews){ %>
+                        <li>
+                            <%= review.comment %>
+                                <%= review.rating %> stars
+                        </li>
+                        <%}%>
+                </ul>
             </form>
         </div>
 
