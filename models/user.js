@@ -10,6 +10,6 @@ const userSchema = new Schema({
 });
 
 // this add username and password AND provide hashing and salting
-User.plugin(passportLocalMongoose);
+userSchema.plugin(passportLocalMongoose);
 
 module.exports = mongoose.model("User", userSchema);

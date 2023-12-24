@@ -10,7 +10,7 @@ const reviews = require("./routes/review.js");
 const session = require("express-session");
 const flash = require("connect-flash");
 const passport = require("passport");
-const localStrategy = require("passport.local");
+const localStrategy = require("passport-local");
 const User = require("./models/user.js");
 
 let MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
@@ -59,13 +59,21 @@ passport.use(new localStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-
-
 app.use((req, res, next) => {
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
   // console.log(res.locals.success);
   next();
+});
+
+//creating demo user
+app.get("/demouser", async (req, res) => {
+  let fakeUser = new User({
+    email: "xyz@mail.com",
+    username: "xyz",
+  });
+  let newUser = await User.register(fakeUser, "demopasword");
+  res.send(newUser);
 });
 
 app.use("/listings", listings);
