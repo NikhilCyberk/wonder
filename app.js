@@ -68,14 +68,14 @@ app.use((req, res, next) => {
 });
 
 //creating demo user
-app.get("/demouser", async (req, res) => {
-  let fakeUser = new User({
-    email: "xyz@mail.com",
-    username: "xyz",
-  });
-  let newUser = await User.register(fakeUser, "demopasword");
-  res.send(newUser);
-});
+// app.get("/demouser", async (req, res) => {
+//   let fakeUser = new User({
+//     email: "xyz@mail.com",
+//     username: "xyz",
+//   });
+//   let newUser = await User.register(fakeUser, "demopasword");
+//   res.send(newUser);
+// });
 
 app.use("/listings", listingsRouter);
 app.use("/listings/:id/reviews", reviewsRouter);
