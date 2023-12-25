@@ -5,22 +5,35 @@ const Listing = require("../models/listing.js");
 const { isLoggedIn, isOwner, validateListing } = require("../middleware.js");
 const listingController = require("../controller/listings.js");
 
-//index routes
-router.get("/", wrapAsync(listingController.index));
+router
+  .route("/")
+  //index routes
+  .get(wrapAsync(listingController.index))
+  //create a new listing
+  .post(
+    isLoggedIn,
+    validateListing,
+    wrapAsync(listingController.createListing)
+  );
 
-//new route
-router.get("/new", isLoggedIn, listingController.renderNewForm);
+router
+  .route("/new")
+  //new route
+  .get(isLoggedIn, listingController.renderNewForm);
 
-//show route
-router.get("/:id", wrapAsync(listingController.showListing));
-
-//create a new listing
-router.post(
-  "/",
-  isLoggedIn,
-  validateListing,
-  wrapAsync(listingController.createListing)
-);
+router
+  .route("/:id")
+  //show route
+  .get(wrapAsync(listingController.showListing))
+  // Update
+  .put(
+    isLoggedIn,
+    isOwner,
+    validateListing,
+    wrapAsync(listingController.updateListing)
+  )
+  // Delete Route
+  .delete(isLoggedIn, isOwner, wrapAsync(listingController.destroyListing));
 
 //edit routes
 router.get(
@@ -28,22 +41,6 @@ router.get(
   isLoggedIn,
   isOwner,
   wrapAsync(listingController.renderEditForm)
-);
-
-// Update
-router.put(
-  "/:id",
-  isLoggedIn,
-  isOwner,
-  validateListing,
-  wrapAsync(listingController.updateListing)
-);
-// Delete Route
-router.delete(
-  "/:id",
-  isLoggedIn,
-  isOwner,
-  wrapAsync(listingController.destroyListing)
 );
 
 module.exports = router;
