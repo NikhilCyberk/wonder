@@ -5,7 +5,9 @@ const Listing = require("../models/listing.js");
 const { isLoggedIn, isOwner, validateListing } = require("../middleware.js");
 const listingController = require("../controller/listings.js");
 const multer = require("multer");
-const upload = multer({ dest: "uploads/" });
+const { storage } = require("../cloudConfig.js");
+const upload = multer({ storage });
+// const upload = multer({ dest: "uploads/" });
 
 router
   .route("/")
@@ -20,7 +22,6 @@ router
   .post(upload.single("listing[image]"), (req, res) => {
     res.send(req.file);
   });
-
 router
   .route("/new")
   //new route
