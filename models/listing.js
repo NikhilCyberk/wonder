@@ -28,6 +28,10 @@ const listeningSchema = new Schema({
       ref: review,
     },
   ],
+  owner: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+  },
 });
 
 //delete review when listing is delete then all releted review will be deleted
