@@ -17,8 +17,13 @@ router.post(
       let newUser = new User({ email, username });
       const registerUser = await User.register(newUser, password);
       //   console.log(registerUser);
-      req.flash("success", "Signup Success");
-      res.redirect("/listings");
+      req.login(registerUser, (err) => {
+        if (err) {
+          return next(err);
+        }
+        req.flash("success", "Signup Success");
+        res.redirect("/listings");
+      });
     } catch (e) {
       req.flash("error", e.message);
       res.redirect("/signup");
