@@ -1,4 +1,5 @@
 const Listing = require("./models/listing");
+const Review = require("./models/review");
 const { listingSchema } = require("./schema.js");
 const ExpressError = require("./utils/ExpressError.js");
 const { reviewSchema } = require("./schema.js");
@@ -55,4 +56,16 @@ module.exports.validateReviws = (req, res, next) => {
   } else {
     next();
   }
+};
+
+//check if user is owner  or not for review
+module.exports.isReviewAuther = async (req, res, next) => {
+  let { id, reviewId } = req.params;
+  let review = await Review.findById(reviewId);
+  // console.log(listing.owner._id);
+  if (!review.author._id.equals(res.locals.currUser._id)) {
+    req.flash("error", "Access denied");
+    return res.redirect(`/listings/${id}`);
+  }
+  next();
 };
