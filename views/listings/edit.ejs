@@ -28,13 +28,15 @@
         </textarea>
         <div class="valid-feedback">looks good!</div>
       </div>
-
+      <!-- perview of image 
+      -->
+      <div class="mb-3">
+        Original Listing Image <br />
+        <img src="<%= originalImageUrl%>" alt="" />
+      </div>
       <div class="mb-3">
         <label for="image" class="form-label">Upload Image</label>
-        <input 
-        name="listing[image]" 
-        type="file" 
-        class="form-control" />
+        <input name="listing[image]" type="file" class="form-control" />
         <div class="invalid-feedback">link not validated</div>
       </div>
 

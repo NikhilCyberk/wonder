@@ -105,3 +105,9 @@ body {
   padding-right: 0;
   border: none !important;
 }
+
+/* map */
+#mapContainer {
+  height: 40vh;
+  width: 80vh;
+}
