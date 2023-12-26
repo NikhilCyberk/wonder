@@ -1,80 +1,89 @@
 <% layout("/layouts/boilerplate")%>
 
 <style>
-  .filter{
+  .filter {
     margin-top: 1rem;
     text-align: center;
     margin-right: 2rem;
     opacity: 0.7;
   }
-  .filter:hover{
+
+  .filter:hover {
     opacity: 1;
     cursor: pointer;
   }
-  .filter p{
+
+  .filter p {
     font-size: medium;
   }
-  #filter{
+
+  #filter {
     display: flex;
     flex-wrap: wrap;
   }
-
-
 </style>
 
 <div id="filter">
   <div class="filter">
-   <div> <i class="fa-solid fa-fire-flame-curved"></i></div>
+    <div> <i class="fa-solid fa-fire-flame-curved"></i></div>
     <p>Trending</p>
   </div>
   <div class="filter">
-   <div> <i class="fa-solid fa-bed"></i></div>
+    <div> <i class="fa-solid fa-bed"></i></div>
     <p>Rooms</p>
   </div>
   <div class="filter">
-   <div> <i class="fa-solid fa-city"></i></div>
+    <div> <i class="fa-solid fa-city"></i></div>
     <p>Iconic Cities</p>
   </div>
   <div class="filter">
-   <div> <i class="fa-solid fa-mountain-sun"></i></div>
+    <div> <i class="fa-solid fa-mountain-sun"></i></div>
     <p>Mountains</p>
   </div>
   <div class="filter">
-   <div> <i class="fa-brands fa-fort-awesome"></i></div>
+    <div> <i class="fa-brands fa-fort-awesome"></i></div>
     <p>Castle</p>
   </div>
   <div class="filter">
-   <div><i class="fa-solid fa-person-swimming"></i></div>
+    <div><i class="fa-solid fa-person-swimming"></i></div>
     <p>Amazing Pools</p>
   </div>
   <div class="filter">
-   <div> <i class="fa-solid fa-cow"></i></div>
+    <div> <i class="fa-solid fa-cow"></i></div>
     <p>Farms</p>
   </div>
   <div class="filter">
-   <div> <i class="fa-solid fa-umbrella-beach"></i></div>
+    <div> <i class="fa-solid fa-umbrella-beach"></i></div>
     <p>Beachfront</p>
   </div>
   <div class="filter">
-   <div><i class="fa-solid fa-mountain-city"></i></div>
+    <div><i class="fa-solid fa-mountain-city"></i></div>
     <p>Amazing views</p>
   </div>
   <div class="filter">
-   <div><i class="fa-solid fa-water"></i></div>
+    <div><i class="fa-solid fa-water"></i></div>
     <p>Lakefront</p>
   </div>
   <div class="filter">
-   <div> <i class="fa-solid fa-sailboat"></i></div>
+    <div> <i class="fa-solid fa-sailboat"></i></div>
     <p>Boats</p>
   </div>
   <div class="filter">
-   <div> <i class="fa-solid fa-unlock-keyhole"></i></div>
+    <div> <i class="fa-solid fa-unlock-keyhole"></i></div>
     <p>New</p>
   </div>
   <div class="filter">
-   <div><i class="fa-brands fa-dribbble"></i></div>
+    <div><i class="fa-brands fa-dribbble"></i></div>
     <p>Play</p>
   </div>
+
+  <div class="tax-switch">
+    <div class="form-check-reverse form-switch ">
+      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+      <label class="form-check-label" for="flexSwitchCheckDefault">Display Taxes</label>
+    </div>
+  </div>
+
 </div>
 <!-- <h1>All Listings</h1> -->
 <!-- <form method="GET" action="/listings/new">
@@ -100,16 +109,10 @@
   </a>
   <% } %>
 </div>
-<!-- 
-                <ul>
-                    <% for(let listing of allListings){ %>
-                        <li>
-                            <a href="/listings/<%= listing._id %>">
 
-                                <%= listing.title %>
-                            </a>
-                        </li>
-                        <% } %>
-
-
-                </ul> -->
+<script>
+  let taxSwitch = document.getElementById("flexSwitchCheckDefault");
+  taxSwitch.addEventListener("click", () => {
+    console.log("clicked");
+  });
+</script>
