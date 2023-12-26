@@ -2,10 +2,22 @@
 <div class="row">
   <div class="col-8 offset-2">
     <h3>Edit Listing</h3>
-    <form method="POST" action="/listings/<%= listing._id%>?_method=PUT" class="needs-validation" novalidate>
+    <form
+      method="POST"
+      action="/listings/<%= listing._id%>?_method=PUT"
+      class="needs-validation"
+      novalidate
+      enctype="multipart/form-data"
+    >
       <div class="mb-3">
         <label for="title" class="form-label">Title</label>
-        <input name="listing[title]" value="<%= listing.title %>" type="text" class="form-control" required />
+        <input
+          name="listing[title]"
+          value="<%= listing.title %>"
+          type="text"
+          class="form-control"
+          required
+        />
         <div class="valid-feedback">Title looks good!</div>
       </div>
 
@@ -18,23 +30,37 @@
       </div>
 
       <div class="mb-3">
-        <label for="image" class="form-label">Image</label>
-
-        <input name="listing[image]" value="<%= listing.image.url %>" type="text" class="form-control" required />
-        <div class="invalid-feedback">link not validate</div>
+        <label for="image" class="form-label">Upload Image</label>
+        <input 
+        name="listing[image]" 
+        type="file" 
+        class="form-control" />
+        <div class="invalid-feedback">link not validated</div>
       </div>
 
       <div class="row">
         <div class="mb-3 col-md-4">
           <label for="price" class="form-label">Price</label>
-          <input name="listing[price]" value="<%= listing.price %>" type="number" class="form-control" required />
+          <input
+            name="listing[price]"
+            value="<%= listing.price %>"
+            type="number"
+            class="form-control"
+            required
+          />
           <div class="invalid-feedback">Price is required</div>
         </div>
 
         <div class="mb-3 col-md-8">
           <label for="country" class="form-label">Country</label>
 
-          <input name="listing[country]" value="<%= listing.country %>" type="text" class="form-control" required />
+          <input
+            name="listing[country]"
+            value="<%= listing.country %>"
+            type="text"
+            class="form-control"
+            required
+          />
           <div class="invalid-feedback">Country is required</div>
         </div>
       </div>
@@ -42,7 +68,13 @@
       <div class="mb-3">
         <label for="location" class="form-label">Location</label>
 
-        <input name="listing[location]" value="<%= listing.location %>" type="text" class="form-control" required />
+        <input
+          name="listing[location]"
+          value="<%= listing.location %>"
+          type="text"
+          class="form-control"
+          required
+        />
         <div class="invalid-feedback">Location is required</div>
       </div>
       <button class="btn btn-dark add-btn mt-3">Add</button>
