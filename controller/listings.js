@@ -31,7 +31,7 @@ module.exports.showListing = async (req, res) => {
 module.exports.createListing = async (req, res, next) => {
   let url = req.file.path;
   let filename = req.file.filename;
-  console.log(url, "...", filename);
+  // console.log(url, "...", filename);
 
   const newListing = new Listing(req.body.listing);
   newListing.owner = req.user._id;
@@ -56,7 +56,6 @@ module.exports.updateListing = async (req, res) => {
     throw new ExpressError(400, "Send valid data for listing");
   }
   let { id } = req.params;
-
   // let listing = await Listing.findById(id);
   // // console.log(listing.owner._id);
   // if (!listing.owner._id.equals(res.locals.currUser._id)) {
@@ -64,7 +63,13 @@ module.exports.updateListing = async (req, res) => {
   //   return res.redirect(`/listings/${id}`);
   // }
 
-  await Listing.findByIdAndUpdate(id, { ...req.body.listing }); //delistings
+  let listing = await Listing.findByIdAndUpdate(id, { ...req.body.listing }); //delistings
+  if (typeof req.file !== "undefined") {
+    let url = req.file.path;
+    let filename = req.file.filename;
+    listing.image = { url, filename };
+    await listing.save();
+  }
   req.flash("success", "Listing updated");
   res.redirect(`/listings/${id}`);
 };
