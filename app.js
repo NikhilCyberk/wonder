@@ -51,9 +51,9 @@ const sessionoptions = {
     httpOnly: true,
   },
 };
-app.get("/", (req, res) => {
-  res.send("working");
-});
+// app.get("/", (req, res) => {
+//   res.send("working");
+// });
 
 app.use(session(sessionoptions));
 app.use(flash());
